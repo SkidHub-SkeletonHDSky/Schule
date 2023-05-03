@@ -1,0 +1,91 @@
+package Main;
+
+	import java.awt.GridBagConstraints;
+
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+	
+public class nr25 extends JFrame implements ActionListener
+{
+
+	private Double R1Z,R2Z,UZ,UR1Z,UR2Z,IZ,U1L,U2L,IL,Rges;
+	private JTextField R1,R2,U,UR1,UR2,I;
+		public nr25() 
+		{
+			
+			JFrame frame = new JFrame("💀 SKCloud | Rechner 💀");
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame.setSize(500,350);
+			
+			JPanel panel = new JPanel(new GridBagLayout());
+			 R1 = new JTextField();
+			 R2 = new JTextField();
+			 U =  new JTextField();
+			 UR1 =  new JTextField();
+			 UR1.setEditable(false);
+			 UR2 =  new JTextField();
+			 UR2.setEditable(false);
+			 I =  new JTextField();
+			 I.setEditable(false);
+			 JButton Berechne = new JButton("Berechne");
+
+			ImageIcon icon = new ImageIcon(new ImageIcon ("Bild.png.png").getImage().getScaledInstance(300, 300,EXIT_ON_CLOSE));
+		    
+			panel.setLayout(new GridBagLayout());
+
+			panel.add(new JLabel("R1 |"),		new GridBagConstraints(1, 0, 2, 1, 0, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, 		new Insets(2,2,2,2), 0, 0));
+			panel.add(new JLabel("R2 |"),		new GridBagConstraints(1, 1, 2, 1, 0, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, 		new Insets(2,2,2,2), 0, 0));
+			panel.add(new JLabel("Uges |"),		new GridBagConstraints(1, 2, 2, 1, 0, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, 		new Insets(2,2,2,2), 0, 0));
+			
+			panel.add(new JLabel("UR1 |"),		new GridBagConstraints(1, 3, 2, 1, 0, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, 		new Insets(2,2,2,2), 0, 0));
+			panel.add(new JLabel("UR2 |"),		new GridBagConstraints(1, 4, 2, 1, 0, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, 		new Insets(2,2,2,2), 0, 0));
+			panel.add(new JLabel("I |"),		new GridBagConstraints(1, 5, 2, 1, 0, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, 		new Insets(2,2,2,2), 0, 0));
+			panel.add(Berechne ,				new GridBagConstraints(3, 5, 1, 1, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.NONE, 				new Insets(2,2,2,2), 0, 0));
+			panel.add(R1 ,					new GridBagConstraints(3, 0, 2, 1, 1, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.HORIZONTAL,	new Insets(2,2,2,2), 0, 0));
+			panel.add(R2 ,					new GridBagConstraints(3, 1, 2, 1, 1, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.HORIZONTAL,	new Insets(2,2,2,2), 0, 0));
+			panel.add(U ,						new GridBagConstraints(3, 2, 2, 1, 1, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.HORIZONTAL, 	new Insets(2,2,2,2), 0, 0));
+			
+			panel.add(UR1 ,					new GridBagConstraints(3, 3, 2, 1, 1, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.HORIZONTAL, 	new Insets(2,2,2,2), 0, 0));
+			panel.add(UR2 ,					new GridBagConstraints(3, 4, 2, 1, 1, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.HORIZONTAL, 	new Insets(2,2,2,2), 0, 0));
+			panel.add(I ,						new GridBagConstraints(3, 5, 2, 1, 1, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.HORIZONTAL, 	new Insets(2,2,2,2), 0, 0));
+			panel.add(new JLabel(icon),		new GridBagConstraints(0, 0, 1, 6, 0, 1, GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, 		new Insets(2,2,2,2), 0, 0));
+			
+			Berechne.addActionListener(this);
+			
+			
+			frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+			frame.getContentPane().add(panel);
+			frame.setVisible(true);
+		}
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			UZ  = Double.parseDouble(U.getText());
+			R1Z = Double.parseDouble(R1.getText());
+			R2Z =  Double.parseDouble(R2.getText());
+			//U1L =  Double.parseDouble(UR1.getText());
+			//U2L =  Double.parseDouble(UR2.getText());
+			//IL  =  Double.parseDouble(I.getText());
+			
+			Rges = R1Z + R2Z;
+			IL = (UZ / Rges);
+			
+			UR1Z = IL * R1Z;
+			UR2Z = IL * R2Z;
+            I.setText(String.valueOf(IL));
+            UR1.setText(String.valueOf(UR1Z));
+            UR2.setText(String.valueOf(UR2Z));
+			
+		}
+	
+		
+		public static void main(String [] args)
+		{
+			new nr25();
+			
+		}
+
+	}
