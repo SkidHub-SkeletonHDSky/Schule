@@ -1,1 +1,3 @@
-# Schule
+# Software Codes
+
+- Reihenschaltung{[]}
