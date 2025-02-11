@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GITHUB | SKELETONHDSKY</title>
+</head>
+<body>
+    <h2>Grundrechenarten</h2>
+
+    <label for="zahl1">Zahl 1:</label>
+    <input type="number" id="zahl1" value="5">
+    
+    <label for="zahl2">Zahl 2:</label>
+    <input type="number" id="zahl2" value="3">
+
+    <button onclick="berechne()">Berechnen</button>
+
+    <h3>Ergebnisse:</h3>
+    <p id="output"></p>
+
+    <script>
+        function berechne() {
+            // 1. Zwei Eingabedaten aus dem Formular einlesen
+            let zahl1 = parseFloat(document.getElementById("zahl1").value);
+            let zahl2 = parseFloat(document.getElementById("zahl2").value);
+
+            // 2. Berechnungen durchführen und in der Ergebnisvariablen speichern
+            let ergebnis = "Addition = " + (zahl1 + zahl2);
+            ergebnis += "<br>Subtraktion = " + (zahl1 - zahl2);
+            ergebnis += "<br>Multiplikation = " + (zahl1 * zahl2);
+
+            // 3. Verhindern der Division durch Null
+            if (zahl2 !== 0) {
+                ergebnis += "<br>Division = " + Math.round((zahl1 / zahl2) * 100) / 100;
+            } else {
+                ergebnis += "<br>Division nicht möglich";
+            }
+
+            // 4. Ergebnis im Ausgabeziel (output) ausgeben
+            document.getElementById("output").innerHTML = ergebnis;
+        }
+    </script>
+</body>
+</html>
